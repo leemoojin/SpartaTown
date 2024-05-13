@@ -6,15 +6,15 @@ public class PlayerInputController : TopDownController
     //lookMouse
     private Camera _camera;
 
+    private Vector2 newAim;
+    private Vector2 worldPos;
+
     private void Awake()
     {
         _camera = Camera.main;
     }
 
-    private void Update()
-    {
-        
-    }
+    
 
     //Input
     public void OnMove(InputValue value)
@@ -27,8 +27,10 @@ public class PlayerInputController : TopDownController
     }
     public void OnLook(InputValue value) 
     {
-        Vector2 newAim = value.Get<Vector2>();
-        Vector2 worldPos = _camera.ScreenToWorldPoint(newAim);
+        Debug.Log("PlayerInputController.cs - OnLook() - 호출");
+
+        newAim = value.Get<Vector2>();
+        worldPos = _camera.ScreenToWorldPoint(newAim);
         newAim = worldPos - ((Vector2)transform.position).normalized;
 
         CallLookEvent(newAim);
