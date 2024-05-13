@@ -34,7 +34,7 @@ public class TopDownMovement : MonoBehaviour
     private void ApplyMovement(Vector2 direction)
     {   
         //이동거리 증가
-        direction = direction * 5;
+        direction = direction * 10;
         _movementRb.velocity = direction;
         //Debug.Log($"TopDownMovement, _movementRb.velocity {_movementRb.velocity}");
     }
